@@ -28,6 +28,7 @@ export default function Task({ navigation }) {
         setTasks(listTask);
       });
   }, []);
+  
 
   return (
     <View style={styles.container}>
