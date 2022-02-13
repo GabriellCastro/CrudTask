@@ -13,7 +13,7 @@ var firebaseConfig = {
 
 // Inicializar o Firebase
 if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig).settings({ experimentalForceLongPolling: true });
 }
 const database = firebase.firestore();
 export default database;
