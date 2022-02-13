@@ -15,15 +15,15 @@ export default function App() {
           name='Task'
           component={Task}
           options={{
-            headerTintColor:"#f92e6a"
+            headerTintColor: "#f92e6a"
           }}
         />
 
         <Stack.Screen
-          name='NewTask'
+          name='New Task'
           component={NewTask}
           options={{
-            headerTintColor:"#f92e6a"
+            headerTintColor: "#f92e6a"
           }}
         />
 
@@ -31,10 +31,10 @@ export default function App() {
           name='Details'
           component={Details}
           options={{
-            headerTintColor:"#f92e6a"
+            headerTintColor: "#f92e6a"
           }}
         />
-        
+
       </Stack.Navigator>
     </NavigationContainer>
   );
