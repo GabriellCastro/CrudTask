@@ -1,10 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
+import { 
+  SafeAreaView,
+  View, 
+  Text,
+  TouchableOpacity,
+  FlatList
+} from "react-native";
+
+import database from "../../config/firebaseconfig";
+import styles from "./style";
 
 export default function Task() {
+  const [taks, setTasks] = useState([]);
+
+  function deleteTask(id) {
+    database.collection("Tasks").doc(id).delete();
+  }
+
+  useEffect(() => {
+    database.collection("Tasks")
+      .onSnapshot((query) => {
+        const listTask = [];
+        query.forEach(element => {
+          listTask.push({...element.data(), id: element.id})
+        });
+        setTasks(listTask);
+      });
+  }, []);
+
   return (
-    <View>
+    <SafeAreaView>
       <Text>Page Tasks</Text>
-    </View>
+    </SafeAreaView>
   );
 }
