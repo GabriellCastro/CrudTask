@@ -1,8 +1,8 @@
-import firebase from "firebase";
-import "firebase/storage";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
 
 // A configuração do Firebase do seu app da Web
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyDZMbwD3TVF3Vdbkx-zbQZj71U1vzRPAY0",
   authDomain: "task-7aac0.firebaseapp.com",
   projectId: "task-7aac0",
@@ -14,5 +14,4 @@ const firebaseConfig = {
 // Inicializar o Firebase
 firebase.initializeApp(firebaseConfig);
 const database = firebase.firestore();
-
 export default database;
