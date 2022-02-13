@@ -1,10 +1,35 @@
-import React from "react";
-import { View, Text } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 
-export default function Details() {
+import database from "../../config/firebaseconfig";
+import styles from "./style";
+
+export default function Details({ navigation, route }) {
+  const [editDescription, setEditDescription] = useState(route.params.description);
+  const idTask = route.params.id;
+
+  function editTask(id) {
+    database.collection("tasks").doc(id).update({
+      description: editDescription,
+    });
+    navigation.navigate("Task");
+  }
+
   return (
-    <View>
-      <Text>Page Details</Text>
+    <View style={styles.container}>
+      <Text style={styles.label}>Description</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Ex: Estudar React Native 📚"
+        onChangeText={setEditDescription}
+        value={editDescription}
+      />
+      <TouchableOpacity
+        style={styles.buttonNewTask}
+        onPress={() => editTask(idTask)}
+      >
+        <Text style={styles.iconButton}>Save</Text>
+      </TouchableOpacity>
     </View>
-  );
+  )
 }
