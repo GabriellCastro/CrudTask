@@ -6,12 +6,14 @@ import {
   FlatList
 } from "react-native";
 
-import database from "../../config/firebaseconfig";
+import firebase from "../../config/firebaseconfig";
 import { FontAwesome } from "@expo/vector-icons";
 import styles from "./style";
 
 export default function Task({ navigation }) {
   const [taks, setTasks] = useState([]);
+
+  const database = firebase.firestore();
 
   function deleteTask(id) {
     database.collection("tasks").doc(id).delete();
