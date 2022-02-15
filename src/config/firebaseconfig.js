@@ -1,8 +1,9 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
+import "firebase/compat/auth"
 
 // A configuração do Firebase do seu app da Web
-var firebaseConfig = {
+let firebaseConfig = {
   apiKey: "AIzaSyDZMbwD3TVF3Vdbkx-zbQZj71U1vzRPAY0",
   authDomain: "task-7aac0.firebaseapp.com",
   projectId: "task-7aac0",
@@ -12,8 +13,7 @@ var firebaseConfig = {
 };
 
 // Inicializar o Firebase
-if (!firebase.apps.length) {
-  firebase.initializeApp(firebaseConfig);
-}
+firebase.initializeApp(firebaseConfig);
+
 
 export default firebase;

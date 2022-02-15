@@ -13,9 +13,17 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login'>
-      <Stack.Screen
+        <Stack.Screen
           name='Login'
           component={Login}
+          options={{
+            headerTintColor: "#f92e6a"
+          }}
+        />
+
+        <Stack.Screen
+          name='Register'
+          component={Register}
           options={{
             headerTintColor: "#f92e6a"
           }}
