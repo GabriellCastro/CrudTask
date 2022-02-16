@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Lottie from 'lottie-react-native';
 import {
   View,
@@ -19,22 +19,26 @@ export default function Login({ navigation }) {
   const [errorLogin, setErrorLogin] = useState('');
 
   const loginFirebase = () => {
-    console.log('aqui')
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
         let user = userCredential.user;
-        // navigation.navigate("Task", { idUser: user.id });
+        navigation.navigate("Task", { idUser: user.uid });
         console.log(user)
       })
       .catch((error) => {
         setErrorLogin(true)
-        console.log('aqui 2')
+        console.log(error)
       });
   }
 
-  // useEffect(() => {
-
-  // }, []);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log('user Login', user)
+      if (user) {
+        navigation.navigate("Task", { idUser: user.uid })
+      }
+    });
+  }, []);
 
   return (
     <KeyboardAvoidingView style={styles.container}>

@@ -10,17 +10,19 @@ import firebase from "../../config/firebaseconfig";
 import { FontAwesome } from "@expo/vector-icons";
 import styles from "./style";
 
-export default function Task({ navigation }) {
+export default function Task({ navigation, route }) {
   const [taks, setTasks] = useState([]);
 
   const database = firebase.firestore();
 
   function deleteTask(id) {
-    database.collection("tasks").doc(id).delete();
+    console.log(id, 'aqui id')
+    console.log(route.params.idUser, 'aqui user id')
+    database.collection(route.params.idUser).doc(id).delete();
   }
 
   useEffect(() => {
-    database.collection("tasks")
+    database.collection(route.params.idUser)
       .onSnapshot((query) => {
         const listTask = [];
         query.forEach(element => {
@@ -30,7 +32,7 @@ export default function Task({ navigation }) {
         setTasks(listTask);
       });
   }, []);
-  
+
 
   return (
     <View style={styles.container}>
@@ -54,6 +56,7 @@ export default function Task({ navigation }) {
                 style={styles.DescriptionTask}
                 onPress={() => navigation
                   .navigate("Details", {
+                    idUser: route.params.idUser,
                     id: item.id,
                     description: item.description,
                   })
@@ -67,7 +70,7 @@ export default function Task({ navigation }) {
       />
       <TouchableOpacity
         style={styles.buttonNewTask}
-        onPress={() => navigation.navigate("New Task")}
+        onPress={() => navigation.navigate("New Task", { idUser: route.params.idUser })}
       >
         <Text style={styles.iconButton}>+</Text>
       </TouchableOpacity>

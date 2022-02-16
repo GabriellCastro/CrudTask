@@ -9,17 +9,17 @@ import {
 import firebase from "../../config/firebaseconfig";
 import styles from "./style";
 
-export default function NewTask({ navigation }) {
+export default function NewTask({ navigation, route }) {
   const [description, setDescription] = useState(null);
 
   const database = firebase.firestore();
 
   function addTask() {
-    database.collection("tasks").add({
+    database.collection(route.params.idUser).add({
       description: description,
       status: false
     })
-    navigation.navigate("Task");
+    navigation.navigate("Task", { idUser: route.params.idUser });
   }
 
   return (

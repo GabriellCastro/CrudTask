@@ -11,7 +11,7 @@ export default function Details({ navigation, route }) {
   const database = firebase.firestore();
 
   function editTask(id) {
-    database.collection("tasks").doc(id).update({
+    database.collection(route.params.idUser).doc(id).update({
       description: editDescription,
     });
     navigation.navigate("Task");

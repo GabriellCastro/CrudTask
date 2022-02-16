@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 
   warningAlert: {
     paddingLeft: 10,
-    color: '#bdbd',
+    color: 'black',
     fontSize: 16
   },
 
