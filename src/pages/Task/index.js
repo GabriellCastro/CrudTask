@@ -7,7 +7,7 @@ import {
 } from "react-native";
 
 import firebase from "../../config/firebaseconfig";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, MaterialCommunityIcons } from "@expo/vector-icons";
 import styles from "./style";
 
 export default function Task({ navigation, route }) {
@@ -19,6 +19,14 @@ export default function Task({ navigation, route }) {
     console.log(id, 'aqui id')
     console.log(route.params.idUser, 'aqui user id')
     database.collection(route.params.idUser).doc(id).delete();
+  }
+
+  function logout() {
+    firebase.auth().signOut().then(() => {
+      navigation.navigate("Login")
+    }).catch((error) => {
+      console.log(error)
+    });
   }
 
   useEffect(() => {
@@ -73,6 +81,18 @@ export default function Task({ navigation, route }) {
         onPress={() => navigation.navigate("New Task", { idUser: route.params.idUser })}
       >
         <Text style={styles.iconButton}>+</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.buttonLogout}
+        onPress={() => logout()}
+      >
+        <Text style={styles.iconButtonLogout}>
+          <MaterialCommunityIcons
+            name="location-exit"
+            size={30}
+            color="#F92E6A"
+          />
+        </Text>
       </TouchableOpacity>
     </View>
   );
