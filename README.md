@@ -15,17 +15,18 @@
 
 
 <h1 align="center">
-  <img alt="WeatherApp" title="WeatherApp" src="./src/images/1.png" height="465" />
-  <img alt="WeatherApp" title="WeatherApp" src="./src/images/2.png" height="465" />
-  <img alt="WeatherApp" title="WeatherApp" src="./src/images/3.png" height="465" />
+  <img alt="TaskApp" title="TaskApp" src="./src/images/appTask.gif" height="465" />
 </h1>
 
 
 ### Features
 
+- [x] Login
+- [x] Registro
 - [x] Criar Tarefa
 - [x] Editar Tarefa
 - [x] Listar Tarefas
+- [x] Excluir Tarefa
 - [x] Firebase Como Banco de Dados
 
 ### Tecnologias
@@ -42,7 +43,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 <p>Antes de executar, são necessários os seguintes softwares instalados na máquina:</p>
  <ul> 
   <li> React Native</li>
-  <li> Expo CLI</li>
+  <li> Expo CLI ou Expo Go</li>
   <li> Android Studio</li>
   <li> Node</li>
  </ul>
